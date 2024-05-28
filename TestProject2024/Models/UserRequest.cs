@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +9,16 @@ namespace TestProject2024.Models
 {
     public  class UserRequest
     {
-        public string Name {  get; set; } 
+        [JsonProperty("name")]
+        public string Name {  get; set; }
 
+        [JsonProperty("email")]
         public string Email { get; set; }
 
-        public string Gender { get; set; } 
+        [JsonProperty("gender")]
+        public string Gender { get; set; }
 
-        public string Status { get; set; }
+        [JsonProperty("status")]
+        public string Status { get; set; } 
     }
 }

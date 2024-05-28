@@ -29,19 +29,19 @@ namespace TestProject2024.HelperClass
             return await _httpClient.PostAsync(endpoint, body);
         }
 
-        public async Task<HttpResponseMessage> GetSpecificUser(string endpoint)
+        public async Task<HttpResponseMessage> GetSpecificUser(string endpoint, int id)
         {
-            return await _httpClient.GetAsync(endpoint);
+            return await _httpClient.GetAsync($"{endpoint}/{id}");
         }
 
-        public async Task<HttpResponseMessage> UpdateUser(string endpoint,StringContent body)
+        public async Task<HttpResponseMessage> UPDATE(string endpoint,StringContent body, int id)
         {
-            return await _httpClient.PutAsync(endpoint, body);
+            return await _httpClient.PutAsync($"{endpoint}/{id}", body);
         }
 
-        public async Task<HttpResponseMessage> DeleteUser(string endpoint)
+        public async Task<HttpResponseMessage> DELETE(string endpoint, int id)
         {
-            return await _httpClient.DeleteAsync(endpoint);
+            return await _httpClient.DeleteAsync($"{endpoint}/{id}");
         }
 
         public async Task<UserResponse> CreateNewUserAsync(string name)
@@ -65,7 +65,7 @@ namespace TestProject2024.HelperClass
 
             var userBody = JsonConvert.SerializeObject(user);
             
-            return new StringContent(userBody);
+            return new StringContent(userBody, System.Text.Encoding.UTF8, "application/json");
         }
 
   
@@ -73,6 +73,7 @@ namespace TestProject2024.HelperClass
         {
             return $"{name}@domain.com";
         }
+
     }
 
 }

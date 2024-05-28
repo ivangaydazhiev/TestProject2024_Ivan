@@ -1,7 +1,10 @@
-﻿namespace TestProject2024.Models
+﻿
+namespace TestProject2024.Models
 {
     public  class UserResponse
     {
+       
+
         public int Id { get; set; }
 
         public string Name { get; set; }
